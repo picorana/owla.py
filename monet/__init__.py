@@ -14,7 +14,7 @@ import pprint
 import json
 import os
 
-nlp = spacy.load('en')
+# nlp = spacy.load('en')
 
 carriers = ['boost mobile', 'lycamobile', 'telcel', 'cricket', 'virgin mobile', 'h2o', 'telstra', 'at&t', 'movistar',
             'tracfone', 'tracphone', 'sprint', 'verizon', 'claro', 'tmobile', 't-mobile', 'metropcs', 'metro pcs',
