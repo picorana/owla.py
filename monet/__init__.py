@@ -27,6 +27,7 @@ legal = ['warranty', 'warranties', 'unlocked']
 
 item_chars = []
 
+"""
 for i, elem in enumerate(os.listdir(QA_PATH)):
     if i == 2: break
 
@@ -129,7 +130,7 @@ for i, elem in enumerate(os.listdir(QA_PATH)):
     item_chars.append(item_characteristics_dict)
 
 pprint.pprint(item_chars)
-
+"""
 
 
 
