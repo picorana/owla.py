@@ -1,6 +1,9 @@
 from monet.constants import *
 
 class QA_set():
+    """
+    Class to store Question/Answer sets
+    """
 
     question = None
     answer = None
@@ -13,6 +16,9 @@ class QA_set():
         return str(self.question) + "\n" + str(self.answer)
 
 class Question():
+    """
+    Class to store a question
+    """
 
     question = None
     type = None
@@ -24,6 +30,12 @@ class Question():
         return self.question
 
     def detect_type(self):
+        """
+        Detects the type of a question: open-ended or closed-ended
+        """
+
+        # todo:
+        # what if questions are more than one in one line?
 
         if self.question is None or self.question == "":
             raise ValueError("Question field is empty")
@@ -45,6 +57,9 @@ class Question():
 
 
 class Answer():
+    """
+    Class to store an answer
+    """
 
     answer = None
 

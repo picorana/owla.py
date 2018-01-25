@@ -1,2 +1,3 @@
-from .ontology import Ontology
+from .ontology import *
+from .properties import *
 from .qa import *

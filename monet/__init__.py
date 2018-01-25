@@ -6,6 +6,7 @@ if sys.version_info[:2] < (2, 7):
 del sys
 
 from monet.classes import *
+from monet.extract import *
 from monet.constants import *
 
 import owlready2
@@ -15,17 +16,6 @@ import json
 import os
 
 # nlp = spacy.load('en')
-
-carriers = ['boost mobile', 'lycamobile', 'telcel', 'cricket', 'virgin mobile', 'h2o', 'telstra', 'at&t', 'movistar',
-            'tracfone', 'tracphone', 'sprint', 'verizon', 'claro', 'tmobile', 't-mobile', 'metropcs', 'metro pcs',
-            't mobile']
-technologies = ['micro sim', 'bluetooth', 'qi wireless', 'ir sensor', '4g', 'lte', '3g', 'cdma', 'gsm', 'wi-fi', 'wifi',
-                'hotspot', 'hot spot', 'nfc', 'dual sim', 'two sim']
-operative_systems = ['android', 'android 8', 'android 7', 'android 6', 'lollipop', 'froyo', 'marshmallow', 'oreo',
-                     'nougat', 'jellybean', 'gingerbread', 'ice cream sandwich']
-legal = ['warranty', 'warranties', 'unlocked']
-
-item_chars = []
 
 """
 for i, elem in enumerate(os.listdir(QA_PATH)):
