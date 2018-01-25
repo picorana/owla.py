@@ -3,6 +3,7 @@ lib/
 saved_ontology.rdf
 ontology.json
 resources/
+.idea/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

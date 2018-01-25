@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c298f99d-4cfd-4f49-8e28-992d9fc40409" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monet/__init__.py" afterPath="$PROJECT_DIR$/monet/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monet/tests/test.py" afterPath="$PROJECT_DIR$/monet/tests/test.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,7 +17,7 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/monet/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="252">
@@ -38,11 +37,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="test.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/monet/tests/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="31" column="21" lean-forward="false" selection-start-line="31" selection-start-column="21" selection-end-line="31" selection-end-column="21" />
+            <state relative-caret-position="108">
+              <caret line="6" column="23" lean-forward="false" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
               <folding>
                 <element signature="e#1#122#0" expanded="true" />
               </folding>
@@ -92,10 +91,10 @@
       <list>
         <option value="$PROJECT_DIR$/monet/classes/__init__.py" />
         <option value="$PROJECT_DIR$/monet/constants.py" />
-        <option value="$PROJECT_DIR$/monet/tests/test.py" />
         <option value="$PROJECT_DIR$/monet/classes/qa.py" />
         <option value="$PROJECT_DIR$/monet/classes/ontology.py" />
         <option value="$PROJECT_DIR$/monet/__init__.py" />
+        <option value="$PROJECT_DIR$/monet/tests/test.py" />
       </list>
     </option>
   </component>
@@ -410,15 +409,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Nosetests_run - 2018.01.24 at 11h 53m 35s.xml">
-      <configuration name="Nosetests_run" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Nosetests_run - 2018.01.24 at 11h 58m 58s.xml">
-      <configuration name="Nosetests_run" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Nosetests_run - 2018.01.24 at 14h 37m 29s.xml">
-      <configuration name="Nosetests_run" configurationId="tests" />
-    </history-entry>
     <history-entry file="Nosetests_run - 2018.01.24 at 14h 38m 49s.xml">
       <configuration name="Nosetests_run" configurationId="tests" />
     </history-entry>
@@ -440,6 +430,15 @@
     <history-entry file="Nosetests_run - 2018.01.24 at 14h 49m 52s.xml">
       <configuration name="Nosetests_run" configurationId="tests" />
     </history-entry>
+    <history-entry file="Nosetests_run - 2018.01.25 at 11h 00m 06s.xml">
+      <configuration name="Nosetests_run" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Nosetests_run - 2018.01.25 at 11h 00m 24s.xml">
+      <configuration name="Nosetests_run" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Nosetests_run - 2018.01.25 at 11h 01m 07s.xml">
+      <configuration name="Nosetests_run" configurationId="tests" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1366" height="741" extended-state="0" />
@@ -450,7 +449,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1012461" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.44080997" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -557,16 +556,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/monet/tests/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="31" column="21" lean-forward="false" selection-start-line="31" selection-start-column="21" selection-end-line="31" selection-end-column="21" />
-          <folding>
-            <element signature="e#1#122#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/monet/classes/ontology.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
@@ -580,6 +569,16 @@
         <state relative-caret-position="252">
           <caret line="14" column="9" lean-forward="true" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monet/tests/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" column="23" lean-forward="false" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
+          <folding>
+            <element signature="e#1#122#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
