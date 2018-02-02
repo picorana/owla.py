@@ -1,6 +1,7 @@
 QA_TEST_PATH = "/home/rana/Amazon_data/qa_datasets/qa_Cell_Phones_and_Accessories.json"
 QA_PATH = "/home/rana/Amazon_data/questions"
 TEST_ONTOLOGY_FILEPATH="/home/rana/mONET/resources/people.rdf"
+MOCKS_FILEPATH="/home/rana/mONET/monet/tests/mocks/"
 
 BE_VERBS = {"am", "are", "is", "was", "were", "being", "been"}
 

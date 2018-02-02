@@ -25,7 +25,7 @@ def load_rdf_xml(filepath, auto_add = True):
             if result.has_property(uri=about):
                 new_object_property = result.get_property(uri=about)
             else:
-                new_object_property = properties.ObjectProperty(about=about)
+                new_object_property = properties.ObjectProperty(uri=about)
 
             for elem in list(child):
                 tag_name_child = etree.QName(elem.tag).localname
@@ -35,20 +35,39 @@ def load_rdf_xml(filepath, auto_add = True):
                     new_object_property.__dict__[tag_name_child] = \
                         next((elem.attrib[key] for key in elem.keys() if etree.QName(key).localname == "resource"), None)
 
-                result.add_property(new_object_property)
+            result.add_property(new_object_property)
+
+        elif tag_name == "DatatypeProperty":
+
+            if result.has_property(uri=about):
+                new_data_property = result.get_property(uri=about)
+            else:
+                new_data_property = properties.DataProperty(uri=about)
+
+            result.add_property(new_data_property)
 
         elif tag_name == "Class":
             # check equivalentClass and subClass
 
             if result.has_class(uri=about):
                 new_class = result.get_class(uri=about)
+            elif auto_add:
+                new_class = OWLClass(uri=about)
             else:
-                new_class = OWLClass(about=about)
+                raise RuntimeError("class " + about + " not found")
 
             for elem in list(child):
                 tag_name_child = etree.QName(elem.tag).localname
                 if tag_name_child in string_properties:
                     new_class.__dict__[tag_name_child] = elem.text
+                if tag_name_child in properties_with_resources:
+                    if tag_name_child == "subClassOf":
+                        if len(elem.attrib)>0:
+                            for item in elem.attrib:
+                                if result.has_class(uri=elem.attrib[item]):
+                                    new_class.subClassOf.add(result.get_class(uri=elem.attrib[item]))
+                                #elif auto_add:
+                                #    result.add_class(OWLClass(uri=elem.attrib[item]))
 
             result.add_class(new_class)
 
@@ -99,6 +118,9 @@ class Ontology(object):
 
     def __init__(self, URI = None):
         self.URI = URI
+        self.classes = set()
+        self.properties = set()
+        self.individuals = set()
 
     def __str__(self):
         return "classes: " + str([c.__dict__ for c in self.classes]) + " \n " \
@@ -106,7 +128,7 @@ class Ontology(object):
                + "individuals" + str([i.__dict__ for i in self.individuals])
 
     def add_class(self, new_class):
-        if self.has_class(uri=new_class.about):
+        if self.has_class(uri=new_class.uri):
             raise RuntimeError("class label " + new_class.label + " already assigned")
         else:
             self.classes.add(new_class)
@@ -120,7 +142,7 @@ class Ontology(object):
         :param label: label of the class
         :return: boolean
         """
-        if uri is not None and True in (c.about == uri for c in self.classes):
+        if uri is not None and True in (c.uri == uri for c in self.classes):
             return True
         elif label is not None and True in (c.label == label for c in self.classes):
             return True
@@ -136,9 +158,9 @@ class Ontology(object):
         :return: OWLClass corresponding to the label or uri.
         """
         if uri is not None and self.has_class(uri=uri):
-            return next(c for c in self.classes if c.about == uri)
+            return next(c for c in self.classes if c.uri == uri)
         elif label is not None and self.has_class(label=label):
-            return next(c for c in self.classes if c.about == label)
+            return next(c for c in self.classes if c.label == label)
         else:
             raise RuntimeError("class not found in this ontology")
 
@@ -153,7 +175,7 @@ class Ontology(object):
         :param label:
         :return:
         """
-        if uri is not None and True in (c.about == uri for c in self.properties):
+        if uri is not None and True in (c.uri == uri for c in self.properties):
             return True
         elif label is not None and True in (c.label == label for c in self.properties):
             return True
@@ -202,21 +224,22 @@ class OWLClass(object):
     Describes a class in a ontology.
     """
 
-    about = None
+    uri = None
     properties = set()
     comment = None
-    subClassOf = None
+    subClassOf = set()
     label = None
 
-    def __init__(self, about=None, comment=None, label=None):
+    def __init__(self, uri=None, comment=None, label=None):
 
         # todo:
         # can classes have no name?
         # should they have a unique ID?
 
-        self.about = about
+        self.uri = uri
         self.comment = comment
         self.label = label
+        self.subClassOf = set()
 
     def add_property(self, new_property):
         self.properties.add(new_property)

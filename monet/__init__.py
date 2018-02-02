@@ -9,6 +9,7 @@ from monet.classes import *
 from monet.extract import *
 from monet.constants import *
 
-load_ontology_from_file(TEST_ONTOLOGY_FILEPATH)
+#load_ontology_from_file(MOCKS_FILEPATH + "data_object_property.rdf")
+#load_ontology_from_file(TEST_ONTOLOGY_FILEPATH)
 
 

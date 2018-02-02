@@ -3,12 +3,12 @@ class OWLProperty(object):
     Describes a property.
     """
     comment = None
-    about = None
+    uri = None
     label = None
 
-    def __init__(self, comment=None, about=None, label=None):
+    def __init__(self, comment=None, uri=None, label=None):
         self.comment = comment
-        self.about = about
+        self.uri = uri
         self.label = label
 
 
@@ -20,13 +20,10 @@ class DataProperty(OWLProperty):
     value = None
     mimetype = None
 
-    def __init__(self, comment=None, about=None, label=None, mimetype=None, value=None):
-        super().__init__(comment, about, label)
+    def __init__(self, comment=None, uri=None, label=None, mimetype=None, value=None):
+        super().__init__(comment, uri, label)
         self.mimetype = mimetype
         self.value = value
-
-    def __str__(self):
-        return str(self.name) + " " + str(self.value)
 
 
 class ObjectProperty(OWLProperty):
@@ -34,5 +31,5 @@ class ObjectProperty(OWLProperty):
     Describes an object property.
     """
 
-    def __init__(self, comment=None, about=None, label=None):
-        super().__init__(comment, about, label)
+    def __init__(self, comment=None, uri=None, label=None):
+        super().__init__(comment, uri, label)
