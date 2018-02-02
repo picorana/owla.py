@@ -15,6 +15,7 @@ class QA_set():
     def __str__(self):
         return str(self.question) + "\n" + str(self.answer)
 
+
 class Question():
     """
     Class to store a question

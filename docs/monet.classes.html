@@ -165,6 +165,64 @@
 <div class="section" id="module-monet.classes.ontology">
 <span id="monet-classes-ontology-module"></span><h2>monet.classes.ontology module<a class="headerlink" href="#module-monet.classes.ontology" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
+<dt id="monet.classes.ontology.NamedIndividual">
+<em class="property">class </em><code class="descclassname">monet.classes.ontology.</code><code class="descname">NamedIndividual</code><span class="sig-paren">(</span><em>label=None</em>, <em>about=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/monet/classes/ontology.html#NamedIndividual"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#monet.classes.ontology.NamedIndividual" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="monet.classes.ontology.NamedIndividual.about">
+<code class="descname">about</code><em class="property"> = None</em><a class="headerlink" href="#monet.classes.ontology.NamedIndividual.about" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="monet.classes.ontology.NamedIndividual.label">
+<code class="descname">label</code><em class="property"> = None</em><a class="headerlink" href="#monet.classes.ontology.NamedIndividual.label" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="monet.classes.ontology.OWLClass">
+<em class="property">class </em><code class="descclassname">monet.classes.ontology.</code><code class="descname">OWLClass</code><span class="sig-paren">(</span><em>about=None</em>, <em>comment=None</em>, <em>label=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/monet/classes/ontology.html#OWLClass"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#monet.classes.ontology.OWLClass" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Describes a class in a ontology.</p>
+<dl class="attribute">
+<dt id="monet.classes.ontology.OWLClass.about">
+<code class="descname">about</code><em class="property"> = None</em><a class="headerlink" href="#monet.classes.ontology.OWLClass.about" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="monet.classes.ontology.OWLClass.add_property">
+<code class="descname">add_property</code><span class="sig-paren">(</span><em>new_property</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/monet/classes/ontology.html#OWLClass.add_property"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#monet.classes.ontology.OWLClass.add_property" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="monet.classes.ontology.OWLClass.comment">
+<code class="descname">comment</code><em class="property"> = None</em><a class="headerlink" href="#monet.classes.ontology.OWLClass.comment" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="monet.classes.ontology.OWLClass.label">
+<code class="descname">label</code><em class="property"> = None</em><a class="headerlink" href="#monet.classes.ontology.OWLClass.label" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="monet.classes.ontology.OWLClass.properties">
+<code class="descname">properties</code><em class="property"> = set()</em><a class="headerlink" href="#monet.classes.ontology.OWLClass.properties" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="monet.classes.ontology.OWLClass.remove_property">
+<code class="descname">remove_property</code><span class="sig-paren">(</span><em>target_property</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/monet/classes/ontology.html#OWLClass.remove_property"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#monet.classes.ontology.OWLClass.remove_property" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="monet.classes.ontology.OWLClass.subClassOf">
+<code class="descname">subClassOf</code><em class="property"> = None</em><a class="headerlink" href="#monet.classes.ontology.OWLClass.subClassOf" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
 <dt id="monet.classes.ontology.Ontology">
 <em class="property">class </em><code class="descclassname">monet.classes.ontology.</code><code class="descname">Ontology</code><span class="sig-paren">(</span><em>URI=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/monet/classes/ontology.html#Ontology"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#monet.classes.ontology.Ontology" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
@@ -174,52 +232,184 @@
 <code class="descname">URI</code><em class="property"> = None</em><a class="headerlink" href="#monet.classes.ontology.Ontology.URI" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="attribute">
+<dt id="monet.classes.ontology.Ontology.about">
+<code class="descname">about</code><em class="property"> = None</em><a class="headerlink" href="#monet.classes.ontology.Ontology.about" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="method">
 <dt id="monet.classes.ontology.Ontology.add_class">
 <code class="descname">add_class</code><span class="sig-paren">(</span><em>new_class</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/monet/classes/ontology.html#Ontology.add_class"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#monet.classes.ontology.Ontology.add_class" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="method">
+<dt id="monet.classes.ontology.Ontology.add_individual">
+<code class="descname">add_individual</code><span class="sig-paren">(</span><em>new_individual</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/monet/classes/ontology.html#Ontology.add_individual"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#monet.classes.ontology.Ontology.add_individual" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="monet.classes.ontology.Ontology.add_property">
+<code class="descname">add_property</code><span class="sig-paren">(</span><em>new_property</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/monet/classes/ontology.html#Ontology.add_property"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#monet.classes.ontology.Ontology.add_property" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="attribute">
 <dt id="monet.classes.ontology.Ontology.classes">
-<code class="descname">classes</code><em class="property"> = set()</em><a class="headerlink" href="#monet.classes.ontology.Ontology.classes" title="Permalink to this definition">¶</a></dt>
+<code class="descname">classes</code><em class="property"> = {&lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;, &lt;monet.classes.ontology.OWLClass object&gt;}</em><a class="headerlink" href="#monet.classes.ontology.Ontology.classes" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-</dd></dl>
-
-<dl class="class">
-<dt id="monet.classes.ontology.OntologyClass">
-<em class="property">class </em><code class="descclassname">monet.classes.ontology.</code><code class="descname">OntologyClass</code><span class="sig-paren">(</span><em>name=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/monet/classes/ontology.html#OntologyClass"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#monet.classes.ontology.OntologyClass" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
-<p>Describes a class in a ontology.</p>
 <dl class="method">
-<dt id="monet.classes.ontology.OntologyClass.add_property">
-<code class="descname">add_property</code><span class="sig-paren">(</span><em>property</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/monet/classes/ontology.html#OntologyClass.add_property"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#monet.classes.ontology.OntologyClass.add_property" title="Permalink to this definition">¶</a></dt>
+<dt id="monet.classes.ontology.Ontology.get_class">
+<code class="descname">get_class</code><span class="sig-paren">(</span><em>uri=None</em>, <em>label=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/monet/classes/ontology.html#Ontology.get_class"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#monet.classes.ontology.Ontology.get_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns an OWLClass in the ontology. Please, specify at least one among uri and label.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>uri</strong> – URI address of the class</li>
+<li><strong>label</strong> – label of the class</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">OWLClass corresponding to the label or uri.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monet.classes.ontology.Ontology.get_individual">
+<code class="descname">get_individual</code><span class="sig-paren">(</span><em>label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/monet/classes/ontology.html#Ontology.get_individual"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#monet.classes.ontology.Ontology.get_individual" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="monet.classes.ontology.Ontology.get_property">
+<code class="descname">get_property</code><span class="sig-paren">(</span><em>uri=None</em>, <em>label=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/monet/classes/ontology.html#Ontology.get_property"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#monet.classes.ontology.Ontology.get_property" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>uri</strong> – </li>
+<li><strong>label</strong> – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monet.classes.ontology.Ontology.has_class">
+<code class="descname">has_class</code><span class="sig-paren">(</span><em>uri=None</em>, <em>label=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/monet/classes/ontology.html#Ontology.has_class"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#monet.classes.ontology.Ontology.has_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if the ontology contains the specified class, False otherwise.
+You can search classes by label or uri, please specify at least one of them when calling the function.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>uri</strong> – uri of the class</li>
+<li><strong>label</strong> – label of the class</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">boolean</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monet.classes.ontology.Ontology.has_individual">
+<code class="descname">has_individual</code><span class="sig-paren">(</span><em>target_individual</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/monet/classes/ontology.html#Ontology.has_individual"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#monet.classes.ontology.Ontology.has_individual" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="monet.classes.ontology.Ontology.has_property">
+<code class="descname">has_property</code><span class="sig-paren">(</span><em>uri=None</em>, <em>label=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/monet/classes/ontology.html#Ontology.has_property"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#monet.classes.ontology.Ontology.has_property" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>uri</strong> – </li>
+<li><strong>label</strong> – </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="monet.classes.ontology.Ontology.individuals">
+<code class="descname">individuals</code><em class="property"> = {&lt;monet.classes.ontology.NamedIndividual object&gt;, &lt;monet.classes.ontology.NamedIndividual object&gt;, &lt;monet.classes.ontology.NamedIndividual object&gt;, &lt;monet.classes.ontology.NamedIndividual object&gt;, &lt;monet.classes.ontology.NamedIndividual object&gt;, &lt;monet.classes.ontology.NamedIndividual object&gt;, &lt;monet.classes.ontology.NamedIndividual object&gt;, &lt;monet.classes.ontology.NamedIndividual object&gt;, &lt;monet.classes.ontology.NamedIndividual object&gt;, &lt;monet.classes.ontology.NamedIndividual object&gt;, &lt;monet.classes.ontology.NamedIndividual object&gt;, &lt;monet.classes.ontology.NamedIndividual object&gt;, &lt;monet.classes.ontology.NamedIndividual object&gt;, &lt;monet.classes.ontology.NamedIndividual object&gt;, &lt;monet.classes.ontology.NamedIndividual object&gt;, &lt;monet.classes.ontology.NamedIndividual object&gt;, &lt;monet.classes.ontology.NamedIndividual object&gt;, &lt;monet.classes.ontology.NamedIndividual object&gt;, &lt;monet.classes.ontology.NamedIndividual object&gt;, &lt;monet.classes.ontology.NamedIndividual object&gt;, &lt;monet.classes.ontology.NamedIndividual object&gt;, &lt;monet.classes.ontology.NamedIndividual object&gt;}</em><a class="headerlink" href="#monet.classes.ontology.Ontology.individuals" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="monet.classes.ontology.OntologyClass.is_a">
-<code class="descname">is_a</code><em class="property"> = None</em><a class="headerlink" href="#monet.classes.ontology.OntologyClass.is_a" title="Permalink to this definition">¶</a></dt>
+<dt id="monet.classes.ontology.Ontology.properties">
+<code class="descname">properties</code><em class="property"> = {&lt;monet.classes.properties.ObjectProperty object&gt;, &lt;monet.classes.properties.ObjectProperty object&gt;, &lt;monet.classes.properties.ObjectProperty object&gt;, &lt;monet.classes.properties.ObjectProperty object&gt;, &lt;monet.classes.properties.ObjectProperty object&gt;, &lt;monet.classes.properties.ObjectProperty object&gt;, &lt;monet.classes.properties.ObjectProperty object&gt;, &lt;monet.classes.properties.ObjectProperty object&gt;, &lt;monet.classes.properties.ObjectProperty object&gt;, &lt;monet.classes.properties.ObjectProperty object&gt;, &lt;monet.classes.properties.ObjectProperty object&gt;, &lt;monet.classes.properties.ObjectProperty object&gt;, &lt;monet.classes.properties.ObjectProperty object&gt;, &lt;monet.classes.properties.ObjectProperty object&gt;}</em><a class="headerlink" href="#monet.classes.ontology.Ontology.properties" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="attribute">
-<dt id="monet.classes.ontology.OntologyClass.name">
-<code class="descname">name</code><em class="property"> = None</em><a class="headerlink" href="#monet.classes.ontology.OntologyClass.name" title="Permalink to this definition">¶</a></dt>
+<dl class="method">
+<dt id="monet.classes.ontology.Ontology.remove_class">
+<code class="descname">remove_class</code><span class="sig-paren">(</span><em>target_class</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/monet/classes/ontology.html#Ontology.remove_class"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#monet.classes.ontology.Ontology.remove_class" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="attribute">
-<dt id="monet.classes.ontology.OntologyClass.properties">
-<code class="descname">properties</code><em class="property"> = set()</em><a class="headerlink" href="#monet.classes.ontology.OntologyClass.properties" title="Permalink to this definition">¶</a></dt>
+<dl class="method">
+<dt id="monet.classes.ontology.Ontology.remove_individual">
+<code class="descname">remove_individual</code><span class="sig-paren">(</span><em>target_individual</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/monet/classes/ontology.html#Ontology.remove_individual"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#monet.classes.ontology.Ontology.remove_individual" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="monet.classes.ontology.Ontology.remove_property">
+<code class="descname">remove_property</code><span class="sig-paren">(</span><em>target_property</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/monet/classes/ontology.html#Ontology.remove_property"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#monet.classes.ontology.Ontology.remove_property" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
+
+<dl class="function">
+<dt id="monet.classes.ontology.load_ontology_from_file">
+<code class="descclassname">monet.classes.ontology.</code><code class="descname">load_ontology_from_file</code><span class="sig-paren">(</span><em>filepath</em>, <em>mode='rdf/xml'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/monet/classes/ontology.html#load_ontology_from_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#monet.classes.ontology.load_ontology_from_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns an ontology from a file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>filepath</strong> – specify the path of the file that contains the ontology to read</li>
+<li><strong>mode</strong> – specify the syntax of the file. Possible modes are: “rdf/xml”, “owl/xml”. Default: rdf/xml.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Ontology</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="monet.classes.ontology.load_rdf_xml">
+<code class="descclassname">monet.classes.ontology.</code><code class="descname">load_rdf_xml</code><span class="sig-paren">(</span><em>filepath</em>, <em>auto_add=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/monet/classes/ontology.html#load_rdf_xml"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#monet.classes.ontology.load_rdf_xml" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </div>
 <div class="section" id="module-monet.classes.properties">
 <span id="monet-classes-properties-module"></span><h2>monet.classes.properties module<a class="headerlink" href="#module-monet.classes.properties" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="monet.classes.properties.DataProperty">
-<em class="property">class </em><code class="descclassname">monet.classes.properties.</code><code class="descname">DataProperty</code><span class="sig-paren">(</span><em>name=None</em>, <em>mimetype=None</em>, <em>value=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/monet/classes/properties.html#DataProperty"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#monet.classes.properties.DataProperty" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#monet.classes.properties.Property" title="monet.classes.properties.Property"><code class="xref py py-class docutils literal"><span class="pre">monet.classes.properties.Property</span></code></a></p>
+<em class="property">class </em><code class="descclassname">monet.classes.properties.</code><code class="descname">DataProperty</code><span class="sig-paren">(</span><em>comment=None</em>, <em>about=None</em>, <em>label=None</em>, <em>mimetype=None</em>, <em>value=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/monet/classes/properties.html#DataProperty"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#monet.classes.properties.DataProperty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#monet.classes.properties.OWLProperty" title="monet.classes.properties.OWLProperty"><code class="xref py py-class docutils literal"><span class="pre">monet.classes.properties.OWLProperty</span></code></a></p>
 <p>Describes a data property.</p>
 <dl class="attribute">
 <dt id="monet.classes.properties.DataProperty.mimetype">
@@ -234,22 +424,32 @@
 </dd></dl>
 
 <dl class="class">
-<dt id="monet.classes.properties.ObjectProperty">
-<em class="property">class </em><code class="descclassname">monet.classes.properties.</code><code class="descname">ObjectProperty</code><span class="sig-paren">(</span><em>name=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/monet/classes/properties.html#ObjectProperty"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#monet.classes.properties.ObjectProperty" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#monet.classes.properties.Property" title="monet.classes.properties.Property"><code class="xref py py-class docutils literal"><span class="pre">monet.classes.properties.Property</span></code></a></p>
-<p>Describes an object property.</p>
-</dd></dl>
-
-<dl class="class">
-<dt id="monet.classes.properties.Property">
-<em class="property">class </em><code class="descclassname">monet.classes.properties.</code><code class="descname">Property</code><span class="sig-paren">(</span><em>name=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/monet/classes/properties.html#Property"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#monet.classes.properties.Property" title="Permalink to this definition">¶</a></dt>
+<dt id="monet.classes.properties.OWLProperty">
+<em class="property">class </em><code class="descclassname">monet.classes.properties.</code><code class="descname">OWLProperty</code><span class="sig-paren">(</span><em>comment=None</em>, <em>about=None</em>, <em>label=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/monet/classes/properties.html#OWLProperty"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#monet.classes.properties.OWLProperty" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
 <p>Describes a property.</p>
 <dl class="attribute">
-<dt id="monet.classes.properties.Property.name">
-<code class="descname">name</code><em class="property"> = None</em><a class="headerlink" href="#monet.classes.properties.Property.name" title="Permalink to this definition">¶</a></dt>
+<dt id="monet.classes.properties.OWLProperty.about">
+<code class="descname">about</code><em class="property"> = None</em><a class="headerlink" href="#monet.classes.properties.OWLProperty.about" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="attribute">
+<dt id="monet.classes.properties.OWLProperty.comment">
+<code class="descname">comment</code><em class="property"> = None</em><a class="headerlink" href="#monet.classes.properties.OWLProperty.comment" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="monet.classes.properties.OWLProperty.label">
+<code class="descname">label</code><em class="property"> = None</em><a class="headerlink" href="#monet.classes.properties.OWLProperty.label" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="monet.classes.properties.ObjectProperty">
+<em class="property">class </em><code class="descclassname">monet.classes.properties.</code><code class="descname">ObjectProperty</code><span class="sig-paren">(</span><em>comment=None</em>, <em>about=None</em>, <em>label=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/monet/classes/properties.html#ObjectProperty"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#monet.classes.properties.ObjectProperty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#monet.classes.properties.OWLProperty" title="monet.classes.properties.OWLProperty"><code class="xref py py-class docutils literal"><span class="pre">monet.classes.properties.OWLProperty</span></code></a></p>
+<p>Describes an object property.</p>
 </dd></dl>
 
 </div>

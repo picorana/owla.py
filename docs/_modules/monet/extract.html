@@ -154,18 +154,61 @@
 
 <span class="kn">import</span> <span class="nn">spacy</span>
 
+<span class="c1"># todo:</span>
+<span class="c1"># detect if there are negations in questions or answers</span>
+<span class="c1"># detect type of answer</span>
+<span class="c1"># detect if question is open or closed</span>
 
-<div class="viewcode-block" id="property_from_question"><a class="viewcode-back" href="../../monet.html#monet.extract.property_from_question">[docs]</a><span class="k">def</span> <span class="nf">property_from_question</span><span class="p">(</span><span class="n">question</span><span class="p">):</span>
+
+<div class="viewcode-block" id="properties_from_question"><a class="viewcode-back" href="../../monet.html#monet.extract.properties_from_question">[docs]</a><span class="k">def</span> <span class="nf">properties_from_question</span><span class="p">(</span><span class="n">question</span><span class="p">):</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
 
     <span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;en&#39;</span><span class="p">)</span>
 
     <span class="n">doc</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span><span class="n">question</span><span class="p">)</span>
 
+    <span class="c1"># CARRIERS</span>
+    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">word</span> <span class="ow">in</span> <span class="n">question</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">carriers</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">carriers</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">question</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+                <span class="n">result</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">DataProperty</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;carrier_supported&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">word</span><span class="p">))</span>
+
+    <span class="c1"># SUPPORTED TECHNOLOGIES</span>
+    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">word</span> <span class="ow">in</span> <span class="n">question</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">technologies</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">technologies</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">question</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+                <span class="n">result</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">DataProperty</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;technology_supported&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">word</span><span class="p">))</span>
+
+    <span class="c1"># LOCATIONS</span>
     <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">ent</span><span class="o">.</span><span class="n">label_</span> <span class="o">==</span> <span class="s2">&quot;GPE&quot;</span> <span class="ow">or</span> <span class="n">ent</span><span class="o">.</span><span class="n">label_</span> <span class="o">==</span> <span class="s2">&quot;LOC&quot;</span> <span class="k">for</span> <span class="n">ent</span> <span class="ow">in</span> <span class="n">doc</span><span class="o">.</span><span class="n">ents</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="s1">&#39;made&#39;</span> <span class="ow">in</span> <span class="n">question</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">or</span> <span class="s1">&#39;manufactured&#39;</span> <span class="ow">in</span> <span class="n">question</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">ent</span> <span class="ow">in</span> <span class="n">doc</span><span class="o">.</span><span class="n">ents</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">ent</span><span class="o">.</span><span class="n">label_</span> <span class="o">==</span> <span class="s2">&quot;GPE&quot;</span> <span class="ow">or</span> <span class="n">ent</span><span class="o">.</span><span class="n">label_</span> <span class="o">==</span> <span class="s2">&quot;LOC&quot;</span><span class="p">:</span>
+                    <span class="n">loc</span> <span class="o">=</span> <span class="n">ent</span><span class="o">.</span><span class="n">string</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+                    <span class="n">result</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">DataProperty</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;made_in&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">loc</span><span class="p">))</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">ent</span> <span class="ow">in</span> <span class="n">doc</span><span class="o">.</span><span class="n">ents</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">ent</span><span class="o">.</span><span class="n">label_</span> <span class="o">==</span> <span class="s2">&quot;GPE&quot;</span> <span class="ow">or</span> <span class="n">ent</span><span class="o">.</span><span class="n">label_</span> <span class="o">==</span> <span class="s2">&quot;LOC&quot;</span><span class="p">:</span>
+                    <span class="n">loc</span> <span class="o">=</span> <span class="n">ent</span><span class="o">.</span><span class="n">string</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+                    <span class="n">result</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">DataProperty</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;location&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">loc</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">ent</span><span class="o">.</span><span class="n">label_</span> <span class="o">==</span> <span class="s2">&quot;ORG&quot;</span> <span class="k">for</span> <span class="n">ent</span> <span class="ow">in</span> <span class="n">doc</span><span class="o">.</span><span class="n">ents</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">ent</span> <span class="ow">in</span> <span class="n">doc</span><span class="o">.</span><span class="n">ents</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">ent</span><span class="o">.</span><span class="n">label_</span> <span class="o">==</span> <span class="s2">&quot;GPE&quot;</span> <span class="ow">or</span> <span class="n">ent</span><span class="o">.</span><span class="n">label_</span> <span class="o">==</span> <span class="s2">&quot;LOC&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">ent</span><span class="o">.</span><span class="n">label_</span> <span class="o">==</span> <span class="s2">&quot;ORG&quot;</span><span class="p">:</span>
                 <span class="n">loc</span> <span class="o">=</span> <span class="n">ent</span><span class="o">.</span><span class="n">string</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-                <span class="k">return</span> <span class="n">loc</span></div>
+                <span class="n">result</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">DataProperty</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;org&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">loc</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">ent</span><span class="o">.</span><span class="n">label_</span> <span class="o">==</span> <span class="s2">&quot;LANGUAGE&quot;</span> <span class="k">for</span> <span class="n">ent</span> <span class="ow">in</span> <span class="n">doc</span><span class="o">.</span><span class="n">ents</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">ent</span> <span class="ow">in</span> <span class="n">doc</span><span class="o">.</span><span class="n">ents</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">ent</span><span class="o">.</span><span class="n">label_</span> <span class="o">==</span> <span class="s2">&quot;LANGUAGE&quot;</span><span class="p">:</span>
+                <span class="n">loc</span> <span class="o">=</span> <span class="n">ent</span><span class="o">.</span><span class="n">string</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+                <span class="n">result</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">DataProperty</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;language&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">loc</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">result</span></div>
+
 
 </pre></div>
 

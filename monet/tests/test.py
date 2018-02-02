@@ -6,17 +6,21 @@ from monet.classes import *
 
 print("Running tests:")
 
-try: import nose
+try:
+    import nose
 except ImportError:
     raise ImportError("nose package required to run tests")
 
+
 def test1():
-    assert_true(1==1)
+    assert_true(1 == 1)
+
 
 def test_qa_set_question_init():
     qa = QA_set("hello", "goodbye")
     assert_equal(str(qa.question), "hello")
     assert_equal(str(qa.answer), "goodbye")
+
 
 def test_question_detect_type():
     question = Question("")
@@ -35,22 +39,33 @@ def test_question_detect_type():
 
 def test_ontology():
     onto = Ontology()
-    assert_equal(onto.classes.pop().name, "owl:Thing")
+    #assert_equal(onto.classes.pop().label, "owl:Thing")
 
-    ontoclass = OntologyClass("")
-    ontoclass.add_property(Property("has_color"))
-    assert_true(ontoclass.properties, {Property("has_color")})
+    ontoclass = OWLClass("")
+    ontoclass.add_property(OWLProperty("has_color"))
+    assert_true(ontoclass.properties, {OWLProperty("has_color")})
+
 
 def test_properties():
-    prop = DataProperty("test", str)
-    assert_equal(prop.name, "test")
+    prop = DataProperty(label="test", mimetype=str)
+    assert_equal(prop.label, "test")
     assert_equal(prop.mimetype, str)
 
-    prop = ObjectProperty("test")
-    assert_equal(prop.name, "test")
+    prop = ObjectProperty(label="test")
+    assert_equal(prop.label, "test")
+
 
 def test_extract_from_question():
 
     import monet.extract
 
-    assert_equal(monet.extract.property_from_question("Does it work in Argentina?"), "argentina")
+    assert_equal(monet.extract.properties_from_question("Does it work in Argentina?").pop().value,
+                 DataProperty(label="location", value="argentina").value)
+
+
+def test_ontology_has_class():
+    onto = Ontology()
+    onto.add_class(OWLClass(label="test"))
+    assert_true(onto.has_class("test"))
+
+

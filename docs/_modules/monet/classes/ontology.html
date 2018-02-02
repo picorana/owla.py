@@ -149,7 +149,93 @@
            <div itemprop="articleBody">
             
   <h1>Source code for monet.classes.ontology</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">monet.classes</span> <span class="k">import</span> <span class="o">*</span>
+<span></span><span class="kn">from</span> <span class="nn">monet.classes</span> <span class="k">import</span> <span class="n">properties</span>
+<span class="kn">from</span> <span class="nn">lxml</span> <span class="k">import</span> <span class="n">etree</span>
+<span class="kn">from</span> <span class="nn">pprint</span> <span class="k">import</span> <span class="n">pprint</span>
+
+
+<div class="viewcode-block" id="load_rdf_xml"><a class="viewcode-back" href="../../../monet.classes.html#monet.classes.ontology.load_rdf_xml">[docs]</a><span class="k">def</span> <span class="nf">load_rdf_xml</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">auto_add</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">Ontology</span><span class="p">()</span>
+
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">XMLParser</span><span class="p">(</span><span class="n">remove_comments</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">tree</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">parser</span><span class="o">=</span><span class="n">parser</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">getroot</span><span class="p">()):</span>
+
+        <span class="n">about</span> <span class="o">=</span> <span class="nb">next</span><span class="p">((</span><span class="n">child</span><span class="o">.</span><span class="n">attrib</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">child</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">if</span> <span class="n">etree</span><span class="o">.</span><span class="n">QName</span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="o">.</span><span class="n">localname</span> <span class="o">==</span> <span class="s2">&quot;about&quot;</span><span class="p">),</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">tag_name</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">QName</span><span class="p">(</span><span class="n">child</span><span class="o">.</span><span class="n">tag</span><span class="p">)</span><span class="o">.</span><span class="n">localname</span>
+
+        <span class="n">properties_with_resources</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;subPropertyOf&quot;</span><span class="p">,</span> <span class="s2">&quot;intersectionOf&quot;</span><span class="p">,</span> <span class="s2">&quot;inverseOf&quot;</span><span class="p">,</span> <span class="s2">&quot;disjointWith&quot;</span><span class="p">,</span> <span class="s2">&quot;subClassOf&quot;</span><span class="p">,</span> <span class="s2">&quot;equivalentClass&quot;</span><span class="p">,</span> <span class="s2">&quot;domain&quot;</span><span class="p">,</span> <span class="s2">&quot;range&quot;</span><span class="p">}</span>
+        <span class="n">string_properties</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;comment&quot;</span><span class="p">,</span> <span class="s2">&quot;label&quot;</span><span class="p">}</span>
+
+        <span class="k">if</span> <span class="n">tag_name</span> <span class="o">==</span> <span class="s2">&quot;Ontology&quot;</span><span class="p">:</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">about</span> <span class="o">=</span> <span class="n">about</span>
+
+        <span class="k">elif</span> <span class="n">tag_name</span> <span class="o">==</span> <span class="s2">&quot;ObjectProperty&quot;</span><span class="p">:</span>
+
+            <span class="k">if</span> <span class="n">result</span><span class="o">.</span><span class="n">has_property</span><span class="p">(</span><span class="n">uri</span><span class="o">=</span><span class="n">about</span><span class="p">):</span>
+                <span class="n">new_object_property</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="n">uri</span><span class="o">=</span><span class="n">about</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">new_object_property</span> <span class="o">=</span> <span class="n">properties</span><span class="o">.</span><span class="n">ObjectProperty</span><span class="p">(</span><span class="n">about</span><span class="o">=</span><span class="n">about</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">child</span><span class="p">):</span>
+                <span class="n">tag_name_child</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">QName</span><span class="p">(</span><span class="n">elem</span><span class="o">.</span><span class="n">tag</span><span class="p">)</span><span class="o">.</span><span class="n">localname</span>
+                <span class="k">if</span> <span class="n">tag_name_child</span> <span class="ow">in</span> <span class="n">string_properties</span><span class="p">:</span>
+                    <span class="n">new_object_property</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="n">tag_name_child</span><span class="p">]</span> <span class="o">=</span> <span class="n">elem</span><span class="o">.</span><span class="n">text</span>
+                <span class="k">elif</span> <span class="n">tag_name_child</span> <span class="ow">in</span> <span class="n">properties_with_resources</span><span class="p">:</span>
+                    <span class="n">new_object_property</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="n">tag_name_child</span><span class="p">]</span> <span class="o">=</span> \
+                        <span class="nb">next</span><span class="p">((</span><span class="n">elem</span><span class="o">.</span><span class="n">attrib</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">elem</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">if</span> <span class="n">etree</span><span class="o">.</span><span class="n">QName</span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="o">.</span><span class="n">localname</span> <span class="o">==</span> <span class="s2">&quot;resource&quot;</span><span class="p">),</span> <span class="kc">None</span><span class="p">)</span>
+
+                <span class="n">result</span><span class="o">.</span><span class="n">add_property</span><span class="p">(</span><span class="n">new_object_property</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">tag_name</span> <span class="o">==</span> <span class="s2">&quot;Class&quot;</span><span class="p">:</span>
+            <span class="c1"># check equivalentClass and subClass</span>
+
+            <span class="k">if</span> <span class="n">result</span><span class="o">.</span><span class="n">has_class</span><span class="p">(</span><span class="n">uri</span><span class="o">=</span><span class="n">about</span><span class="p">):</span>
+                <span class="n">new_class</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">get_class</span><span class="p">(</span><span class="n">uri</span><span class="o">=</span><span class="n">about</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">new_class</span> <span class="o">=</span> <span class="n">OWLClass</span><span class="p">(</span><span class="n">about</span><span class="o">=</span><span class="n">about</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">child</span><span class="p">):</span>
+                <span class="n">tag_name_child</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">QName</span><span class="p">(</span><span class="n">elem</span><span class="o">.</span><span class="n">tag</span><span class="p">)</span><span class="o">.</span><span class="n">localname</span>
+                <span class="k">if</span> <span class="n">tag_name_child</span> <span class="ow">in</span> <span class="n">string_properties</span><span class="p">:</span>
+                    <span class="n">new_class</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="n">tag_name_child</span><span class="p">]</span> <span class="o">=</span> <span class="n">elem</span><span class="o">.</span><span class="n">text</span>
+
+            <span class="n">result</span><span class="o">.</span><span class="n">add_class</span><span class="p">(</span><span class="n">new_class</span><span class="p">)</span>
+
+        <span class="c1"># are named individuals and things exactly the same?</span>
+        <span class="k">elif</span> <span class="n">tag_name</span> <span class="o">==</span> <span class="s2">&quot;NamedIndividual&quot;</span> <span class="ow">or</span> <span class="n">tag_name</span> <span class="o">==</span> <span class="s2">&quot;Thing&quot;</span><span class="p">:</span>
+
+            <span class="n">new_individual</span> <span class="o">=</span> <span class="n">NamedIndividual</span><span class="p">(</span><span class="n">about</span><span class="o">=</span><span class="n">about</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">child</span><span class="p">):</span>
+                <span class="n">tag_name_child</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">QName</span><span class="p">(</span><span class="n">elem</span><span class="o">.</span><span class="n">tag</span><span class="p">)</span><span class="o">.</span><span class="n">localname</span>
+                <span class="k">if</span> <span class="n">tag_name_child</span> <span class="ow">in</span> <span class="n">string_properties</span><span class="p">:</span>
+                    <span class="n">new_individual</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="n">tag_name_child</span><span class="p">]</span> <span class="o">=</span> <span class="n">elem</span><span class="o">.</span><span class="n">text</span>
+
+            <span class="n">result</span><span class="o">.</span><span class="n">add_individual</span><span class="p">(</span><span class="n">new_individual</span><span class="p">)</span>
+
+    <span class="n">pprint</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">result</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">result</span></div>
+
+
+<div class="viewcode-block" id="load_ontology_from_file"><a class="viewcode-back" href="../../../monet.classes.html#monet.classes.ontology.load_ontology_from_file">[docs]</a><span class="k">def</span> <span class="nf">load_ontology_from_file</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;rdf/xml&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns an ontology from a file.</span>
+
+<span class="sd">    :param filepath: specify the path of the file that contains the ontology to read</span>
+<span class="sd">    :param mode: specify the syntax of the file. Possible modes are: &quot;rdf/xml&quot;, &quot;owl/xml&quot;. Default: rdf/xml.</span>
+<span class="sd">    :return: Ontology</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">mode</span><span class="o">==</span><span class="s2">&quot;rdf/xml&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">load_rdf_xml</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">mode</span><span class="o">==</span><span class="s2">&quot;owl/xml&quot;</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;mode not yet implemented&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;mode not found&quot;</span><span class="p">)</span></div>
+
 
 <div class="viewcode-block" id="Ontology"><a class="viewcode-back" href="../../../monet.classes.html#monet.classes.ontology.Ontology">[docs]</a><span class="k">class</span> <span class="nc">Ontology</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -158,34 +244,147 @@
 
     <span class="n">URI</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">classes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="n">properties</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="n">about</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">individuals</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">URI</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">URI</span> <span class="o">=</span> <span class="n">URI</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">classes</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">OntologyClass</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;owl:Thing&quot;</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;classes: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">([</span><span class="n">c</span><span class="o">.</span><span class="vm">__dict__</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes</span><span class="p">])</span> <span class="o">+</span> <span class="s2">&quot; </span><span class="se">\n</span><span class="s2"> &quot;</span> \
+               <span class="o">+</span> <span class="s2">&quot;properties: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">([</span><span class="n">p</span><span class="o">.</span><span class="vm">__dict__</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="p">])</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> \
+               <span class="o">+</span> <span class="s2">&quot;individuals&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">([</span><span class="n">i</span><span class="o">.</span><span class="vm">__dict__</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">individuals</span><span class="p">])</span>
 
 <div class="viewcode-block" id="Ontology.add_class"><a class="viewcode-back" href="../../../monet.classes.html#monet.classes.ontology.Ontology.add_class">[docs]</a>    <span class="k">def</span> <span class="nf">add_class</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_class</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">classes</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">new_class</span><span class="p">)</span></div></div>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_class</span><span class="p">(</span><span class="n">uri</span><span class="o">=</span><span class="n">new_class</span><span class="o">.</span><span class="n">about</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;class label &quot;</span> <span class="o">+</span> <span class="n">new_class</span><span class="o">.</span><span class="n">label</span> <span class="o">+</span> <span class="s2">&quot; already assigned&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">classes</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">new_class</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Ontology.has_class"><a class="viewcode-back" href="../../../monet.classes.html#monet.classes.ontology.Ontology.has_class">[docs]</a>    <span class="k">def</span> <span class="nf">has_class</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns True if the ontology contains the specified class, False otherwise.</span>
+<span class="sd">        You can search classes by label or uri, please specify at least one of them when calling the function.</span>
+
+<span class="sd">        :param uri: uri of the class</span>
+<span class="sd">        :param label: label of the class</span>
+<span class="sd">        :return: boolean</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">uri</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="kc">True</span> <span class="ow">in</span> <span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">about</span> <span class="o">==</span> <span class="n">uri</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">elif</span> <span class="n">label</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="kc">True</span> <span class="ow">in</span> <span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">label</span> <span class="o">==</span> <span class="n">label</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span></div>
+
+<div class="viewcode-block" id="Ontology.get_class"><a class="viewcode-back" href="../../../monet.classes.html#monet.classes.ontology.Ontology.get_class">[docs]</a>    <span class="k">def</span> <span class="nf">get_class</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns an OWLClass in the ontology. Please, specify at least one among uri and label.</span>
+
+<span class="sd">        :param uri: URI address of the class</span>
+<span class="sd">        :param label: label of the class</span>
+<span class="sd">        :return: OWLClass corresponding to the label or uri.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">uri</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_class</span><span class="p">(</span><span class="n">uri</span><span class="o">=</span><span class="n">uri</span><span class="p">):</span>
+            <span class="k">return</span> <span class="nb">next</span><span class="p">(</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes</span> <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">about</span> <span class="o">==</span> <span class="n">uri</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">label</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_class</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">):</span>
+            <span class="k">return</span> <span class="nb">next</span><span class="p">(</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes</span> <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">about</span> <span class="o">==</span> <span class="n">label</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;class not found in this ontology&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Ontology.remove_class"><a class="viewcode-back" href="../../../monet.classes.html#monet.classes.ontology.Ontology.remove_class">[docs]</a>    <span class="k">def</span> <span class="nf">remove_class</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target_class</span><span class="p">):</span>
+        <span class="c1"># need to remove the class from all relationships, and remove all the properties that use this class</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">classes</span><span class="o">.</span><span class="n">discard</span><span class="p">(</span><span class="n">target_class</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Ontology.has_property"><a class="viewcode-back" href="../../../monet.classes.html#monet.classes.ontology.Ontology.has_property">[docs]</a>    <span class="k">def</span> <span class="nf">has_property</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        :param uri:</span>
+<span class="sd">        :param label:</span>
+<span class="sd">        :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">uri</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="kc">True</span> <span class="ow">in</span> <span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">about</span> <span class="o">==</span> <span class="n">uri</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">elif</span> <span class="n">label</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="kc">True</span> <span class="ow">in</span> <span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">label</span> <span class="o">==</span> <span class="n">label</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span></div>
+
+<div class="viewcode-block" id="Ontology.add_property"><a class="viewcode-back" href="../../../monet.classes.html#monet.classes.ontology.Ontology.add_property">[docs]</a>    <span class="k">def</span> <span class="nf">add_property</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_property</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">new_property</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Ontology.remove_property"><a class="viewcode-back" href="../../../monet.classes.html#monet.classes.ontology.Ontology.remove_property">[docs]</a>    <span class="k">def</span> <span class="nf">remove_property</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target_property</span><span class="p">):</span>
+        <span class="c1"># may need to remove the property from all the classes that have it</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">discard</span><span class="p">(</span><span class="n">target_property</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Ontology.get_property"><a class="viewcode-back" href="../../../monet.classes.html#monet.classes.ontology.Ontology.get_property">[docs]</a>    <span class="k">def</span> <span class="nf">get_property</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        :param uri:</span>
+<span class="sd">        :param label:</span>
+<span class="sd">        :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">uri</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_property</span><span class="p">(</span><span class="n">uri</span><span class="o">=</span><span class="n">uri</span><span class="p">):</span>
+            <span class="k">return</span> <span class="nb">next</span><span class="p">(</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">properties</span> <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">about</span> <span class="o">==</span> <span class="n">uri</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">label</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_property</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">):</span>
+            <span class="k">return</span> <span class="nb">next</span><span class="p">(</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">properties</span> <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">about</span> <span class="o">==</span> <span class="n">label</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;class not found in this ontology&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Ontology.add_individual"><a class="viewcode-back" href="../../../monet.classes.html#monet.classes.ontology.Ontology.add_individual">[docs]</a>    <span class="k">def</span> <span class="nf">add_individual</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_individual</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">individuals</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">new_individual</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Ontology.has_individual"><a class="viewcode-back" href="../../../monet.classes.html#monet.classes.ontology.Ontology.has_individual">[docs]</a>    <span class="k">def</span> <span class="nf">has_individual</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target_individual</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">True</span> <span class="ow">in</span> <span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">label</span> <span class="o">==</span> <span class="n">target_individual</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">individuals</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Ontology.remove_individual"><a class="viewcode-back" href="../../../monet.classes.html#monet.classes.ontology.Ontology.remove_individual">[docs]</a>    <span class="k">def</span> <span class="nf">remove_individual</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target_individual</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">individuals</span><span class="o">.</span><span class="n">discard</span><span class="p">(</span><span class="n">target_individual</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Ontology.get_individual"><a class="viewcode-back" href="../../../monet.classes.html#monet.classes.ontology.Ontology.get_individual">[docs]</a>    <span class="k">def</span> <span class="nf">get_individual</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_individual</span><span class="p">(</span><span class="n">label</span><span class="p">):</span>
+            <span class="k">return</span> <span class="nb">next</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">label</span> <span class="o">==</span> <span class="n">label</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">individuals</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;class &quot;</span> <span class="o">+</span> <span class="n">label</span> <span class="o">+</span> <span class="s2">&quot;not found in this ontology&quot;</span><span class="p">)</span></div></div>
 
 
-<div class="viewcode-block" id="OntologyClass"><a class="viewcode-back" href="../../../monet.classes.html#monet.classes.ontology.OntologyClass">[docs]</a><span class="k">class</span> <span class="nc">OntologyClass</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="OWLClass"><a class="viewcode-back" href="../../../monet.classes.html#monet.classes.ontology.OWLClass">[docs]</a><span class="k">class</span> <span class="nc">OWLClass</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Describes a class in a ontology.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">name</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">about</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">properties</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
-    <span class="n">is_a</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">comment</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">subClassOf</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="kc">None</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">about</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 
         <span class="c1"># todo:</span>
         <span class="c1"># can classes have no name?</span>
         <span class="c1"># should they have a unique ID?</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">about</span> <span class="o">=</span> <span class="n">about</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">comment</span> <span class="o">=</span> <span class="n">comment</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">label</span>
 
-<div class="viewcode-block" id="OntologyClass.add_property"><a class="viewcode-back" href="../../../monet.classes.html#monet.classes.ontology.OntologyClass.add_property">[docs]</a>    <span class="k">def</span> <span class="nf">add_property</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">property</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="nb">property</span><span class="p">)</span></div></div>
+<div class="viewcode-block" id="OWLClass.add_property"><a class="viewcode-back" href="../../../monet.classes.html#monet.classes.ontology.OWLClass.add_property">[docs]</a>    <span class="k">def</span> <span class="nf">add_property</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_property</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">new_property</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OWLClass.remove_property"><a class="viewcode-back" href="../../../monet.classes.html#monet.classes.ontology.OWLClass.remove_property">[docs]</a>    <span class="k">def</span> <span class="nf">remove_property</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target_property</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">discard</span><span class="p">(</span><span class="n">target_property</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="NamedIndividual"><a class="viewcode-back" href="../../../monet.classes.html#monet.classes.ontology.NamedIndividual">[docs]</a><span class="k">class</span> <span class="nc">NamedIndividual</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="n">label</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">about</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">about</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">label</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">about</span> <span class="o">=</span> <span class="n">about</span></div>
+
 
 
 
