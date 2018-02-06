@@ -1,108 +1,6 @@
 from monet.classes import properties
+from monet.constants import *
 from lxml import etree
-from pprint import pprint
-
-
-def load_rdf_xml(filepath, auto_add = True):
-    result = Ontology()
-
-    parser = etree.XMLParser(remove_comments=True)
-    tree = etree.parse(filepath, parser=parser)
-
-    for child in list(tree.getroot()):
-
-        about = next((child.attrib[key] for key in child.keys() if etree.QName(key).localname == "about"), None)
-        tag_name = etree.QName(child.tag).localname
-
-        properties_with_resources = {"subPropertyOf", "intersectionOf", "inverseOf", "disjointWith", "subClassOf", "equivalentClass", "domain", "range"}
-        string_properties = {"comment", "label"}
-
-        if tag_name == "Ontology":
-            result.uri = about
-
-        elif tag_name == "ObjectProperty":
-
-            if result.has_property(uri=about):
-                new_object_property = result.get_property(uri=about)
-            else:
-                new_object_property = properties.ObjectProperty(uri=about)
-
-            for elem in list(child):
-                tag_name_child = etree.QName(elem.tag).localname
-                if tag_name_child in string_properties:
-                    new_object_property.__dict__[tag_name_child] = elem.text
-                elif tag_name_child in properties_with_resources:
-                    new_object_property.__dict__[tag_name_child] = \
-                        next((elem.attrib[key] for key in elem.keys() if etree.QName(key).localname == "resource"), None)
-
-            result.add_property(new_object_property)
-
-        elif tag_name == "DatatypeProperty":
-
-            if result.has_property(uri=about):
-                new_data_property = result.get_property(uri=about)
-            else:
-                new_data_property = properties.DataProperty(uri=about)
-
-            result.add_property(new_data_property)
-
-        elif tag_name == "Class":
-            # check equivalentClass and subClass
-
-            if result.has_class(uri=about):
-                new_class = result.get_class(uri=about)
-            elif auto_add:
-                new_class = OWLClass(uri=about)
-            else:
-                raise RuntimeError("class " + about + " not found")
-
-            for elem in list(child):
-                tag_name_child = etree.QName(elem.tag).localname
-                if tag_name_child in string_properties:
-                    new_class.__dict__[tag_name_child] = elem.text
-                if tag_name_child in properties_with_resources:
-                    if tag_name_child == "subClassOf":
-                        if len(elem.attrib)>0:
-                            for item in elem.attrib:
-                                if result.has_class(uri=elem.attrib[item]):
-                                    new_class.subClassOf.add(result.get_class(uri=elem.attrib[item]))
-                                #elif auto_add:
-                                #    result.add_class(OWLClass(uri=elem.attrib[item]))
-
-            result.add_class(new_class)
-
-        # are named individuals and things exactly the same?
-        elif tag_name == "NamedIndividual" or tag_name == "Thing":
-
-            new_individual = NamedIndividual(about=about)
-
-            for elem in list(child):
-                tag_name_child = etree.QName(elem.tag).localname
-                if tag_name_child in string_properties:
-                    new_individual.__dict__[tag_name_child] = elem.text
-
-            result.add_individual(new_individual)
-
-    pprint(str(result))
-
-    return result
-
-
-def load_ontology_from_file(filepath, mode="rdf/xml"):
-    """
-    Returns an ontology from a file.
-
-    :param filepath: specify the path of the file that contains the ontology to read
-    :param mode: specify the syntax of the file. Possible modes are: "rdf/xml", "owl/xml". Default: rdf/xml.
-    :return: Ontology
-    """
-
-    if mode=="rdf/xml":
-        return load_rdf_xml(filepath)
-    elif mode=="owl/xml":
-        raise RuntimeError("mode not yet implemented")
-    else:
-        raise RuntimeError("mode not found")
 
 
 class Ontology(object):
@@ -217,44 +115,44 @@ class Ontology(object):
         else:
             raise RuntimeError("class " + label + "not found in this ontology")
 
+    def save(self, output_path=OUTPUT_PATH):
+        file_to_write = open(output_path, 'w')
+        file_to_write.write(xml_head + "\n")
 
-class OWLClass(object):
-    """
-    Describes a class in a ontology.
-    """
+        rdf_xml_root = etree.Element(etree.QName(xmlns.rdf, 'RDF'), nsmap={
+            "rdf": xmlns.rdf,
+            "owl": xmlns.owl,
+            "xml": xmlns.xml,
+            "xsd": xmlns.xsd,
+            "rdfs": xmlns.rdfs,
+            "ns0": str(self.URI) + "#",
+        })
 
-    uri = None
-    properties = set()
-    comment = None
-    subClassOf = set()
-    label = None
+        rdf_xml_root.attrib[etree.QName(xmlns.xml, "base")] = str(self.URI)
+        rdf_xml_root.attrib["xmlns"] = str(self.URI) + "#"
 
-    def __init__(self, uri=None, comment=None, label=None):
+        rdf_xml_root.append(etree.Element(etree.QName(xmlns.owl, "Ontology"),
+                                          attrib={etree.QName(xmlns.rdf, "about") : str(self.URI)}))
 
-        # todo:
-        # can classes have no name?
-        # should they have a unique ID?
+        for c in self.classes.union(self.properties).union(self.individuals):
 
-        self.uri = uri
-        self.comment = comment
-        self.label = label
-        self.subClassOf = set()
+            new_elem = etree.Element(etree.QName(xmlns.owl, rdf_xml_type_map[c.__class__.__name__]),
+                                     attrib={etree.QName(xmlns.rdf, "about"): str(c.uri)})
 
-    def add_property(self, new_property):
-        self.properties.add(new_property)
+            comment_node = etree.Element(etree.QName(xmlns.rdfs, "comment"),
+                                         attrib={etree.QName(xmlns.rdf, "datatype"): xmlns.xsd+"string"})
+            if c.comment is not None: comment_node.text = c.comment
+            new_elem.append(comment_node)
 
-    def remove_property(self, target_property):
-        self.properties.discard(target_property)
+            label_node = etree.Element(etree.QName(xmlns.rdfs, "label"),
+                                       attrib={etree.QName(xmlns.rdf, "datatype"): xmlns.xsd + "string"})
+            if c.label is not None: label_node.text = c.label
+            new_elem.append(label_node)
 
+            rdf_xml_root.append(new_elem)
 
-class NamedIndividual(object):
+        file_to_write.write(etree.tostring(rdf_xml_root, encoding='unicode', pretty_print=True))
 
-    label = None
-    uri = None
-
-    def __init__(self, label = None, uri=None):
-        self.label = label
-        self.uri = uri
 
 
 

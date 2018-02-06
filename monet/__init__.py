@@ -8,8 +8,11 @@ del sys
 from monet.classes import *
 from monet.extract import *
 from monet.constants import *
+from monet.parsers import *
 
-load_ontology_from_file(MOCKS_FILEPATH + "data_object_property.rdf")
+#onto = load_ontology_from_file(MOCKS_FILEPATH + "data_object_property.rdf")
+#onto = load_ontology_from_file(TEST_ONTOLOGY_FILEPATH)
+#onto.save()
 #load_ontology_from_file(TEST_ONTOLOGY_FILEPATH)
 
 

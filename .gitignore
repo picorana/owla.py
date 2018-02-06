@@ -4,6 +4,7 @@ saved_ontology.rdf
 ontology.json
 resources/
 .idea/
+monet/test_output.pdf
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

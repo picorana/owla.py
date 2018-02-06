@@ -1,7 +1,12 @@
+import os
+from lxml import etree
+full_dir = os.path.dirname(__file__)
+
 QA_TEST_PATH = "/home/rana/Amazon_data/qa_datasets/qa_Cell_Phones_and_Accessories.json"
 QA_PATH = "/home/rana/Amazon_data/questions"
-TEST_ONTOLOGY_FILEPATH="/home/rana/mONET/resources/people.rdf"
-MOCKS_FILEPATH="./mocks/"
+TEST_ONTOLOGY_FILEPATH = "/home/rana/mONET/resources/people.rdf"
+MOCKS_FILEPATH = os.path.join(full_dir, 'tests/mocks/')
+OUTPUT_PATH = "test_output.rdf"
 
 BE_VERBS = {"am", "are", "is", "was", "were", "being", "been"}
 
@@ -17,14 +22,17 @@ operative_systems = {'android', 'android 8', 'android 7', 'android 6', 'lollipop
                      'nougat', 'jellybean', 'gingerbread', 'ice cream sandwich'}
 legal = {'warranty', 'warranties', 'unlocked'}
 
-rdf_head = '<?xml version="1.0"?>' \
-           '<rdf:RDF xmlns="http://owl.man.ac.uk/2006/07/sssw/people#"' \
-           'xml:base="http://owl.man.ac.uk/2006/07/sssw/people"' \
-           'xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"' \
-           'xmlns:owl="http://www.w3.org/2002/07/owl#"' \
-           'xmlns:xml="http://www.w3.org/XML/1998/namespace"' \
-           'xmlns:xsd="http://www.w3.org/2001/XMLSchema#"' \
-           'xmlns:ns0="http://owl.man.ac.uk/2006/07/sssw/people#"' \
-           'xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">'
+class xmlns:
+    rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    owl = "http://www.w3.org/2002/07/owl#"
+    xml = "http://www.w3.org/XML/1998/namespace"
+    xsd = "http://www.w3.org/2001/XMLSchema#"
+    rdfs = "http://www.w3.org/2000/01/rdf-schema#"
 
-rdf_tail = '</rdf:RDF>'
+xml_head = '<?xml version="1.0"?>'
+
+rdf_xml_type_map = {
+    "OWLClass":"Class",
+    "NamedIndividual":"NamedIndividual",
+    "ObjectProperty":"ObjectProperty"
+}

@@ -8,7 +8,7 @@ import spacy
 # detect type of answer
 # detect if question is open or closed
 
-
+"""
 def properties_from_question(question):
 
     result = set()
@@ -57,5 +57,5 @@ def properties_from_question(question):
                 result.add(DataProperty(label="language", value=loc))
 
     return result
-
+"""
 
