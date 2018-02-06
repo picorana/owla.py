@@ -83,13 +83,11 @@ def test_ontology_get_class():
 
 def test_ontology_rdf_xml_single_class():
     onto = load_ontology_from_file(MOCKS_FILEPATH + "single_class.rdf")
-    assert_equal(onto.about, "http://www.semanticweb.org/ontologies/2018/1/untitled-ontology-9")
+    assert_equal(onto.uri, "http://www.semanticweb.org/ontologies/2018/1/untitled-ontology-9")
 
-    assert_equal(onto.classes.pop().about, "http://www.semanticweb.org/ontologies/2018/1/untitled-ontology-9#test")
+    assert_equal(onto.classes.pop().uri, "http://www.semanticweb.org/ontologies/2018/1/untitled-ontology-9#test")
 
 def test_ontology_rdf_xml_data_object_properties():
     onto = load_ontology_from_file(MOCKS_FILEPATH + "data_object_property.rdf")
 
-    print(onto)
-
-    assert_equal(onto.classes.pop().about, "http://www.semanticweb.org/ontologies/2018/1/untitled-ontology-9#test")
+    assert_equal(onto.classes.pop().uri, "http://www.semanticweb.org/ontologies/2018/1/untitled-ontology-9#test")

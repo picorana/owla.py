@@ -18,7 +18,7 @@ def load_rdf_xml(filepath, auto_add = True):
         string_properties = {"comment", "label"}
 
         if tag_name == "Ontology":
-            result.about = about
+            result.uri = about
 
         elif tag_name == "ObjectProperty":
 
@@ -113,7 +113,6 @@ class Ontology(object):
     URI = None
     classes = set()
     properties = set()
-    about = None
     individuals = set()
 
     def __init__(self, URI = None):
@@ -197,9 +196,9 @@ class Ontology(object):
         :return:
         """
         if uri is not None and self.has_property(uri=uri):
-            return next(c for c in self.properties if c.about == uri)
+            return next(c for c in self.properties if c.uri == uri)
         elif label is not None and self.has_property(label=label):
-            return next(c for c in self.properties if c.about == label)
+            return next(c for c in self.properties if c.uri == label)
         else:
             raise RuntimeError("class not found in this ontology")
 
@@ -251,11 +250,11 @@ class OWLClass(object):
 class NamedIndividual(object):
 
     label = None
-    about = None
+    uri = None
 
-    def __init__(self, label = None, about=None):
+    def __init__(self, label = None, uri=None):
         self.label = label
-        self.about = about
+        self.uri = uri
 
 
 
