@@ -1,0 +1,392 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:ns0="http://owl.man.ac.uk/2006/07/sssw/people#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xml:base="http://owl.man.ac.uk/2006/07/sssw/people" xmlns="http://owl.man.ac.uk/2006/07/sssw/people#">
+  <owl:Ontology rdf:about="http://owl.man.ac.uk/2006/07/sssw/people"/>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#van">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">van</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#bus_driver">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Someone who drives a bus.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">bus driver</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#van_driver">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">van driver</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#cat">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cat</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#car">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">car</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#vegetarian">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A vegetarian is defined as an animal that eats no other animals, or parts of animals.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">vegetarian</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#cat_liker">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cat liker</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#white_thing">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">white thing</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#vehicle">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">vehicle</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#white_van_man">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A white van man is a man who drives a white van.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">white van man</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#cat_owner">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cat owner</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.w3.org/2002/07/owl#Thing">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#cow">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cows are naturally vegetarians.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cow</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#company">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">company</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#woman">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">woman</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#dog">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">dog</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#young">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">young</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#bus">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">bus</rdfs:label>
+  </owl:Class>
+  <owl:NamedIndividual rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#Daily_Mirror">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The paper read by Mick.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Daily Mirror</rdfs:label>
+  </owl:NamedIndividual>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#mad_cow">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A mad cow is a cow that has been eating the brains of sheep.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">mad cow</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#male">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The class of all male things.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">male</rdfs:label>
+  </owl:Class>
+  <owl:NamedIndividual rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#Dewey">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dewey</rdfs:label>
+  </owl:NamedIndividual>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#magazine">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">magazine</rdfs:label>
+  </owl:Class>
+  <owl:NamedIndividual rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#Fido">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Fido</rdfs:label>
+  </owl:NamedIndividual>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#newspaper">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">All newspapers are either broadsheets or tabloids.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">newspaper</rdfs:label>
+  </owl:Class>
+  <owl:NamedIndividual rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#Flossie">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Flossie</rdfs:label>
+  </owl:NamedIndividual>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#man">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">man</rdfs:label>
+  </owl:Class>
+  <owl:NamedIndividual rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#Fluffy">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Fluffy</rdfs:label>
+  </owl:NamedIndividual>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#old_lady">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">old lady</rdfs:label>
+  </owl:Class>
+  <owl:NamedIndividual rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#Fred">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Fred</rdfs:label>
+  </owl:NamedIndividual>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#pet">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pet</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#person">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">person</rdfs:label>
+  </owl:Class>
+  <owl:NamedIndividual rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#Huey">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Huey</rdfs:label>
+  </owl:NamedIndividual>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#pet_owner">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pet owner</rdfs:label>
+  </owl:Class>
+  <owl:NamedIndividual rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#Joe">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Joe</rdfs:label>
+  </owl:NamedIndividual>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#plant">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">plant</rdfs:label>
+  </owl:Class>
+  <owl:NamedIndividual rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#Kevin">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Kevin</rdfs:label>
+  </owl:NamedIndividual>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#quality_broadsheet">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">quality broadsheet</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#publication">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">publication</rdfs:label>
+  </owl:Class>
+  <owl:NamedIndividual rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#Louie">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Louie</rdfs:label>
+  </owl:NamedIndividual>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#tabloid">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A newspaper. Tabloids are usually thought of as more "down-market" than broadsheets.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">tabloid</rdfs:label>
+  </owl:Class>
+  <owl:NamedIndividual rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#Mick">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mick is male and drives a white van. </rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mick</rdfs:label>
+  </owl:NamedIndividual>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#red_top">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">red top</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#sheep">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">sheep</rdfs:label>
+  </owl:Class>
+  <owl:NamedIndividual rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#Minnie">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Minnie</rdfs:label>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#Q123_ABC">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A white van</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Q123 ABC</rdfs:label>
+  </owl:NamedIndividual>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#broadsheet">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A newspaper. Broadsheets are usually considered to be more "high-brow" than tabloids.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">broadsheet</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#tiger">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">tiger</rdfs:label>
+  </owl:Class>
+  <owl:NamedIndividual rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#Pete">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pete</rdfs:label>
+  </owl:NamedIndividual>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#tree">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">tree</rdfs:label>
+  </owl:Class>
+  <owl:NamedIndividual rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#Rex">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Rex</rdfs:label>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#The_Times">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Times</rdfs:label>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#The_Guardian">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Guardian</rdfs:label>
+  </owl:NamedIndividual>
+  <owl:ObjectProperty rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#has_father">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">has_father</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#dog_liker">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">dog liker</rdfs:label>
+  </owl:Class>
+  <owl:NamedIndividual rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#Spike">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Spike</rdfs:label>
+  </owl:NamedIndividual>
+  <owl:ObjectProperty rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#has_mother">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">has_mother</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:NamedIndividual rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#The_Sun">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Sun</rdfs:label>
+  </owl:NamedIndividual>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#dog_owner">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">dog owner</rdfs:label>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#has_parent">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">has_parent</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#duck">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">duck</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#driver">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">driver</rdfs:label>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#has_part">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">has_part</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:NamedIndividual rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#Walt">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Walt</rdfs:label>
+  </owl:NamedIndividual>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#elderly">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">elderly</rdfs:label>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#is_pet_of">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">is_pet_of</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:NamedIndividual rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#Tibbs">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Tibbs</rdfs:label>
+  </owl:NamedIndividual>
+  <owl:ObjectProperty rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#has_pet">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Anyone that has a pet must like that pet.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">has_pet</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#female">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">female</rdfs:label>
+  </owl:Class>
+  <owl:NamedIndividual rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#Tom">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Tom</rdfs:label>
+  </owl:NamedIndividual>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#giraffe">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">giraffe</rdfs:label>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#drives">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">drives</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#likes">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">likes</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#grass">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">grass</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="None">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#part_of">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">part_of</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#grownup">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">grownup</rdfs:label>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#reads">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">reads</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#haulage_company">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">haulage company</rdfs:label>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#works_for">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">works_for</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#haulage_truck_driver">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">haulage truck driver</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#animal">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">animal</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#kid">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">kid</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#adult">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Things that are adult.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">adult</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#haulage_worker">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">haulage worker</rdfs:label>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#has_child">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">has_child</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#animal_lover">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Someone who really likes animals</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">animal lover</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#leaf">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">leaf</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#lorry">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">lorry</rdfs:label>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#eaten_by">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">eaten_by</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#bicycle">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A human propelled vehicle, with two wheels</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">bicycle</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#brain">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">brain</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#bone">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">bone</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#lorry_driver">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">lorry driver</rdfs:label>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#eats">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">eats</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#truck">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">truck</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://owl.man.ac.uk/2006/07/sssw/people#bus_company">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">bus company</rdfs:label>
+  </owl:Class>
+</rdf:RDF>

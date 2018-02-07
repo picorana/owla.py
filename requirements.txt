@@ -1,5 +1,4 @@
 owlready2
-spacy
 pprint
 lxml
 codecov

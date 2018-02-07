@@ -34,5 +34,6 @@ xml_head = '<?xml version="1.0"?>'
 rdf_xml_type_map = {
     "OWLClass":"Class",
     "NamedIndividual":"NamedIndividual",
-    "ObjectProperty":"ObjectProperty"
+    "ObjectProperty":"ObjectProperty",
+    "DataProperty":"DataProperty"
 }
