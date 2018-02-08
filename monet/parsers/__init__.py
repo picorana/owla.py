@@ -1,4 +1,5 @@
 from .rdf_xml_parser import *
+from .jsonld_parser import *
 
 
 def load_ontology_from_file(filepath, mode="rdf/xml"):
@@ -10,9 +11,11 @@ def load_ontology_from_file(filepath, mode="rdf/xml"):
     :return: Ontology
     """
 
-    if mode=="rdf/xml":
+    if mode == "rdf/xml":
         return load_rdf_xml(filepath)
-    elif mode=="owl/xml":
+    elif mode == "jsonld":
+        return load_jsonld(filepath)
+    elif mode == "owl/xml":
         raise RuntimeError("mode not yet implemented")
     else:
         raise RuntimeError("mode not found")

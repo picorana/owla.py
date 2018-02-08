@@ -7,6 +7,8 @@ class OWLClass(object):
     properties = set()
     comment = None
     subClassOf = set()
+    equivalentClass = set()
+    disjointWith = set()
     label = None
 
     def __init__(self, uri=None, comment=None, label=None):
@@ -19,6 +21,7 @@ class OWLClass(object):
         self.comment = comment
         self.label = label
         self.subClassOf = set()
+        self.disjointWith = set()
 
     def add_property(self, new_property):
         self.properties.add(new_property)

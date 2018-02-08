@@ -11,8 +11,8 @@ from monet.constants import *
 from monet.parsers import *
 
 #onto = load_ontology_from_file(MOCKS_FILEPATH + "data_object_property.rdf")
-#onto = load_ontology_from_file(TEST_ONTOLOGY_FILEPATH)
-#onto.save()
+onto = load_ontology_from_file(TEST_ONTOLOGY_FILEPATH, mode="jsonld")
+onto.save()
 #load_ontology_from_file(TEST_ONTOLOGY_FILEPATH)
 
 

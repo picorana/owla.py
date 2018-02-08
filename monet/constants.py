@@ -4,7 +4,7 @@ full_dir = os.path.dirname(__file__)
 
 QA_TEST_PATH = "/home/rana/Amazon_data/qa_datasets/qa_Cell_Phones_and_Accessories.json"
 QA_PATH = "/home/rana/Amazon_data/questions"
-TEST_ONTOLOGY_FILEPATH = "/home/rana/mONET/resources/people.rdf"
+TEST_ONTOLOGY_FILEPATH = "/home/rana/mONET/resources/people.json.owl"
 MOCKS_FILEPATH = os.path.join(full_dir, 'tests/mocks/')
 OUTPUT_PATH = "test_output.rdf"
 
@@ -21,6 +21,9 @@ technologies = {'micro sim', 'bluetooth', 'qi wireless', 'ir sensor', '4g', 'lte
 operative_systems = {'android', 'android 8', 'android 7', 'android 6', 'lollipop', 'froyo', 'marshmallow', 'oreo',
                      'nougat', 'jellybean', 'gingerbread', 'ice cream sandwich'}
 legal = {'warranty', 'warranties', 'unlocked'}
+
+properties_with_resources = {"subPropertyOf", "intersectionOf", "inverseOf", "disjointWith", "subClassOf", "equivalentClass", "domain", "range"}
+string_properties = {"comment", "label"}
 
 class xmlns:
     rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"

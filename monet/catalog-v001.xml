@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
     <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
-        <uri id="Automatically generated entry, Timestamp=1517933345243" name="http://owl.man.ac.uk/2006/07/sssw/people" uri="test_output.rdf"/>
-        <uri id="Automatically generated entry, Timestamp=1517933345243" name="duplicate:http://www.semanticweb.org/ontologies/2018/1/untitled-ontology-9" uri="tests/mocks/single_class.rdf"/>
-        <uri id="Automatically generated entry, Timestamp=1517933345243" name="duplicate:http://www.semanticweb.org/ontologies/2018/1/untitled-ontology-9" uri="tests/mocks/data_object_property.rdf"/>
-        <uri id="Automatically generated entry, Timestamp=1517933345243" name="duplicate:http://www.semanticweb.org/ontologies/2018/1/untitled-ontology-9" uri="tests/mocks/individual.rdf"/>
+        <uri id="Automatically generated entry, Timestamp=1518012182193" name="http://owl.man.ac.uk/2006/07/sssw/people" uri="test_output.rdf"/>
+        <uri id="Automatically generated entry, Timestamp=1518012182193" name="duplicate:http://www.semanticweb.org/ontologies/2018/1/untitled-ontology-9" uri="tests/mocks/single_class.rdf"/>
+        <uri id="Automatically generated entry, Timestamp=1518012182193" name="duplicate:http://www.semanticweb.org/ontologies/2018/1/untitled-ontology-9" uri="tests/mocks/data_object_property.rdf"/>
+        <uri id="Automatically generated entry, Timestamp=1518012182193" name="duplicate:http://www.semanticweb.org/ontologies/2018/1/untitled-ontology-9" uri="tests/mocks/individual.rdf"/>
+        <uri id="Automatically generated entry, Timestamp=1518012182193" name="shadowed:http://owl.man.ac.uk/2006/07/sssw/people" uri="tests/test_output.rdf"/>
     </group>
 </catalog>

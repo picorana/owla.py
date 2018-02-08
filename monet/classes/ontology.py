@@ -1,4 +1,6 @@
+from monet.classes import OWLClass
 from monet.classes import properties
+from monet.writers import *
 from monet.constants import *
 from lxml import etree
 
@@ -115,43 +117,8 @@ class Ontology(object):
         else:
             raise RuntimeError("class " + label + "not found in this ontology")
 
-    def save(self, output_path=OUTPUT_PATH):
-        file_to_write = open(output_path, 'w')
-        file_to_write.write(xml_head + "\n")
-
-        rdf_xml_root = etree.Element(etree.QName(xmlns.rdf, 'RDF'), nsmap={
-            "rdf": xmlns.rdf,
-            "owl": xmlns.owl,
-            "xml": xmlns.xml,
-            "xsd": xmlns.xsd,
-            "rdfs": xmlns.rdfs,
-            "ns0": str(self.URI) + "#",
-        })
-
-        rdf_xml_root.attrib[etree.QName(xmlns.xml, "base")] = str(self.URI)
-        rdf_xml_root.attrib["xmlns"] = str(self.URI) + "#"
-
-        rdf_xml_root.append(etree.Element(etree.QName(xmlns.owl, "Ontology"),
-                                          attrib={etree.QName(xmlns.rdf, "about") : str(self.URI)}))
-
-        for c in self.classes.union(self.properties).union(self.individuals):
-
-            new_elem = etree.Element(etree.QName(xmlns.owl, rdf_xml_type_map[c.__class__.__name__]),
-                                     attrib={etree.QName(xmlns.rdf, "about"): str(c.uri)})
-
-            comment_node = etree.Element(etree.QName(xmlns.rdfs, "comment"),
-                                         attrib={etree.QName(xmlns.rdf, "datatype"): xmlns.xsd+"string"})
-            if c.comment is not None: comment_node.text = c.comment
-            new_elem.append(comment_node)
-
-            label_node = etree.Element(etree.QName(xmlns.rdfs, "label"),
-                                       attrib={etree.QName(xmlns.rdf, "datatype"): xmlns.xsd + "string"})
-            if c.label is not None: label_node.text = c.label
-            new_elem.append(label_node)
-
-            rdf_xml_root.append(new_elem)
-
-        file_to_write.write(etree.tostring(rdf_xml_root, encoding='unicode', pretty_print=True))
+    def save(self, output_path=OUTPUT_PATH, syntax="rdf/xml"):
+        write_ontology(self, output_path, syntax)
 
 
 
