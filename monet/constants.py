@@ -4,7 +4,7 @@ full_dir = os.path.dirname(__file__)
 
 QA_TEST_PATH = "/home/rana/Amazon_data/qa_datasets/qa_Cell_Phones_and_Accessories.json"
 QA_PATH = "/home/rana/Amazon_data/questions"
-TEST_ONTOLOGY_FILEPATH = "/home/rana/mONET/resources/people.json.owl"
+TEST_ONTOLOGY_FILEPATH = "/home/rana/mONET/resources/people.rdf"
 MOCKS_FILEPATH = os.path.join(full_dir, 'tests/mocks/')
 OUTPUT_PATH = "test_output.rdf"
 

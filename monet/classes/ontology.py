@@ -14,15 +14,20 @@ class Ontology(object):
     classes = set()
     properties = set()
     individuals = set()
+    restrictions = set()
+    anonymous_ancestors = set()
 
     def __init__(self, URI = None):
         self.URI = URI
         self.classes = set()
         self.properties = set()
         self.individuals = set()
+        self.restrictions = set()
+        self.anonymous_ancestors = set()
+        self.classes.add(OWLClass.OWLClass(uri="http://www.w3.org/2002/07/owl#Thing", label="owl:Thing"))
 
     def __str__(self):
-        return "classes: " + str([c.__dict__ for c in self.classes]) + " \n " \
+        return "classes: ".join(repr(c) for c in self.classes) + " \n " \
                + "properties: " + str([p.__dict__ for p in self.properties]) + "\n" \
                + "individuals" + str([i.__dict__ for i in self.individuals])
 

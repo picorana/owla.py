@@ -13,7 +13,12 @@ def load_jsonld(filepath, auto_add = True):
 
         # classes
         if elem["@type"][0].split("#")[1] == "Class":
-            if "_:genid" not in elem["@id"]:
+
+            if "_:genid" in elem["@id"]:
+                print(elem["@type"])
+                if elem["@type"][0].split("#")[1] == "Restriction":
+                    print("a")
+            else:
                 new_class = OWLClass(uri=elem["@id"])
                 for key in elem:
 
