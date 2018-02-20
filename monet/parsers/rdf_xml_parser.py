@@ -183,6 +183,56 @@ def parse_restriction(result, child, auto_add):
     return new_res
 
 
-def parse_anonymous_class(result, item):
+def parse_anonymous_class(result, child, auto_add=True):
     new_anon_class = AnonymousAncestor.AnonymousAncestor()
+    for elem in list(child):
+        tag_name_child = etree.QName(elem.tag).localname
+        if tag_name_child in string_properties:
+            new_anon_class.__dict__[tag_name_child] = elem.text
+
+        # subClassOf
+        if tag_name_child == "subClassOf":
+            if len(elem.attrib) > 0:
+                for item in elem.attrib:
+                    if result.has_class(uri=elem.attrib[item]):
+                        new_anon_class.subClassOf.add(result.get_class(uri=elem.attrib[item]))
+                    elif auto_add:
+                        new_subclass_class = OWLClass(uri=elem.attrib[item])
+                        result.add_class(new_subclass_class)
+                        new_anon_class.subClassOf.add(new_subclass_class)
+                    else:
+                        raise RuntimeError(
+                            "class " + elem.attrib[item] + " referenced in subClassOf axiom but not"
+                                                           "found in the ontology, use auto_add"
+                                                           "option to automatically add referenced"
+                                                           "subclasses to the ontology")
+            else:
+                for item in list(elem):
+                    if etree.QName(item.tag).localname == "Restriction":
+                        new_anon_class.restrictions.add(parse_restriction(result, item, auto_add))
+
+        # disjointWith
+        elif tag_name_child == "disjointWith":
+            if len(elem.attrib) > 0:
+                for item in elem.attrib:
+                    if result.has_class(uri=elem.attrib[item]):
+                        new_anon_class.disjointWith.add(result.get_class(uri=elem.attrib[item]))
+                    elif auto_add:
+                        new_disjoint_class = OWLClass(uri=elem.attrib[item])
+                        result.add_class(new_disjoint_class)
+                        new_anon_class.disjointWith.add(new_disjoint_class)
+                    else:
+                        raise RuntimeError(
+                            "class " + elem.attrib[item] + " referenced in subClassOf axiom but not"
+                                                           "found in the ontology, use auto_add"
+                                                           "option to automatically add referenced"
+                                                           "subclasses to the ontology")
+
+        elif tag_name_child == "equivalentClass":
+            new_anon_class.equivalentClass.add(parse_anonymous_class(result, elem))
+        elif tag_name_child == "unionOf":
+            new_anon_class.unionOf.add(parse_anonymous_class(result, elem))
+        elif tag_name_child == "intersectionOf":
+            new_anon_class.intersectionOf.add(parse_anonymous_class(result, elem))
+
     return new_anon_class

@@ -56,6 +56,20 @@ def rdf_xml_write(ontology, output_path):
                                                   attrib={etree.QName(xmlns.rdf, "resource"): elem.uri})
                     new_elem.append(disjoint_node)
 
+            # restriction
+            if c.restrictions is not None and len(c.restrictions) > 0:
+                for elem in c.restrictions:
+                    restriction_node = etree.Element(etree.QName(xmlns.owl, "Restriction"))
+                    if elem.onProperty is not None:
+                        new_prop_node = etree.Element(etree.QName(xmlns.owl, "onProperty"),
+                                                      attrib={etree.QName(xmlns.rdf, "resource"): elem.onProperty.uri})
+                        restriction_node.append(new_prop_node)
+                    if elem.minCardinality is not None:
+                        new_min_card_node = etree.Element(etree.QName(xmlns.owl, "minCardinality"),
+                                                      attrib={etree.QName(xmlns.rdf, "resource"): elem.onProperty.uri})
+                        restriction_node.append(new_min_card_node)
+                    new_elem.append(restriction_node)
+
         rdf_xml_root.append(new_elem)
 
     file_to_write.write(etree.tostring(rdf_xml_root, encoding='unicode', pretty_print=True))

@@ -1,6 +1,16 @@
 class AnonymousAncestor:
 
-    intersectionOf = None
+    intersectionOf = set()
+    subClassOf = set()
+    restrictions = set()
+    disjointWith = set()
+    equivalentClass = set()
+    unionOf = set()
 
     def __init__(self):
-        pass
+        self.intersectionOf = set()
+        self.subClassOf = set()
+        self.restrictions = set()
+        self.disjointWith = set()
+        self.equivalentClass = set()
+        self.unionOf = set()
